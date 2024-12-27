@@ -14,7 +14,7 @@ const plugin: EggPlugin = {
     package: '@eggjs/tegg-controller-plugin',
   },
   teggSchedule: {
-    enable: true,
+    enable: false,
     package: '@eggjs/tegg-schedule-plugin',
   },
   teggOrm: {
@@ -57,7 +57,7 @@ const plugin: EggPlugin = {
     package: 'egg-status',
   },
   elasticsearch: {
-    enable: true,
+    enable: false,
     package: 'eggjs-elasticsearch',
   },
 };

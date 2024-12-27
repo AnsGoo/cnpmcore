@@ -42,12 +42,4 @@ export class SearchRepository {
   async searchPackage(query): Promise<estypes.SearchHitsMetadata<SearchManifestType>> {
     return await this.searchAdapter.search<SearchManifestType>(query);
   }
-
-  async upsertPackage(document: SearchManifestType) {
-    return await this.searchAdapter.upsert(document.package.name, document);
-  }
-
-  async removePackage(fullname: string) {
-    return await this.searchAdapter.delete(fullname);
-  }
 }

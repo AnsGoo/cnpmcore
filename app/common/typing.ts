@@ -53,8 +53,6 @@ export interface QueueAdapter {
 
 export interface SearchAdapter {
   search<T>(query: any): Promise<estypes.SearchHitsMetadata<T>>;
-  upsert<T>(id: string, document: T): Promise<string>;
-  delete(id: string): Promise<string>;
 }
 
 export interface AuthUrlResult {

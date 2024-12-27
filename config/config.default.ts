@@ -57,13 +57,13 @@ export const cnpmcoreConfig: CnpmcoreConfig = {
   enableSyncUnpkgFiles: true,
   enableSyncUnpkgFilesWhiteList: false,
   strictSyncSpecivicVersion: false,
-  enableElasticsearch: !!process.env.CNPMCORE_CONFIG_ENABLE_ES,
-  elasticsearchIndex: 'cnpmcore_packages',
+  enableElasticsearch: false,
   strictValidateTarballPkg: false,
   strictValidatePackageDeps: false,
   database: {
     type: database.type,
   },
+  elasticsearchIndex: 'cnpmcore_packages',
 };
 
 export default (appInfo: EggAppConfig) => {
@@ -202,19 +202,6 @@ export default (appInfo: EggAppConfig) => {
       file: 'sql.log',
     },
   };
-
-  // more options: https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/configuration.html
-  if (config.cnpmcore.enableElasticsearch) {
-    config.elasticsearch = {
-      client: {
-        node: process.env.CNPMCORE_CONFIG_ES_CLIENT_NODE,
-        auth: {
-          username: process.env.CNPMCORE_CONFIG_ES_CLIENT_AUTH_USERNAME as string,
-          password: process.env.CNPMCORE_CONFIG_ES_CLIENT_AUTH_PASSWORD as string,
-        },
-      },
-    };
-  }
 
   return config;
 };

@@ -5,11 +5,11 @@ export enum DATABASE_TYPE {
 }
 
 const dbType = process.env.CNPMCORE_DATABASE_TYPE ?? DATABASE_TYPE.MySQL;
-let dbName = process.env.CNPMCORE_DATABASE_NAME;
-let dbHost = process.env.CNPMCORE_DATABASE_HOST;
-let dbPort = process.env.CNPMCORE_DATABASE_PORT;
-let dbUser = process.env.CNPMCORE_DATABASE_USER;
-let dbPassword = process.env.CNPMCORE_DATABASE_PASSWORD;
+let dbName = process.env.CNPMCORE_DATABASE_NAME || 'cnpmcore';
+let dbHost = process.env.CNPMCORE_DATABASE_HOST || 'localhost';
+let dbPort = process.env.CNPMCORE_DATABASE_PORT || '5432';
+let dbUser = process.env.CNPMCORE_DATABASE_USER || 'postgres';
+let dbPassword = process.env.CNPMCORE_DATABASE_PASSWORD || '210608';
 let dialect = 'mysql';
 let dbClient = 'mysql2';
 if (dbType === DATABASE_TYPE.MySQL) {

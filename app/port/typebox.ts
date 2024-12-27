@@ -3,7 +3,6 @@ import { RegistryType } from '../common/enum/Registry';
 import semver from 'semver';
 import npa from 'npm-package-arg';
 import { HookType } from '../common/enum/Hook';
-import binaryConfig, { BinaryName } from '../../config/binaries';
 import { uniq } from 'lodash';
 
 export const Name = Type.String({
@@ -142,12 +141,6 @@ export function patchAjv(ajv: any) {
       } catch (e) {
         return false;
       }
-    },
-  });
-  ajv.addFormat('binary-name', {
-    type: 'string',
-    validate: (binaryName: BinaryName) => {
-      return binaryConfig[binaryName];
     },
   });
   ajv.addFormat('unique-semver-version-array', {
