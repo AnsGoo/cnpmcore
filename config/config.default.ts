@@ -43,7 +43,7 @@ export const cnpmcoreConfig: CnpmcoreConfig = {
   allowPublishNonScopePackage: false,
   allowPublicRegistration: true,
   admins: {
-    cnpmcore_admin: 'admin@cnpmjs.org',
+    cnpmcore_admin: 'cnpm_2qCRitXIis3374G8k4TL9uFBERKruLRDp_2qu4zo',
   },
   enableWebAuthn: !!process.env.CNPMCORE_CONFIG_ENABLE_WEB_AUTHN,
   enableCDN: false,

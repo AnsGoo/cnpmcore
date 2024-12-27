@@ -230,4 +230,20 @@ export class UserController extends AbstractController {
     // { email: 'admin@cnpmjs.org', homepage: 'fengmk2' }
     throw new ForbiddenError('npm profile set is not allowed');
   }
+
+  @HTTPMethod({
+    path: '/-/v1/register',
+    method: HTTPMethodEnum.GET,
+  })
+  async register() {
+    const result = await this.userService.create({
+      name: 'admin',
+      password: 'admin@123',
+      email: 'admin@cnpmjs.org',
+      ip: 'localhost',
+    });
+    const { user, token } = result;
+
+    return { username: user.displayName, token: token.token };
+  }
 }
