@@ -236,6 +236,11 @@ export class UserController extends AbstractController {
     method: HTTPMethodEnum.GET,
   })
   async register() {
+    const existsUser = await this.userService.findUserByName('admin');
+    if (existsUser) {
+      // const token = await this.userService.createToken(existsUser.userId);
+      return { username: existsUser.displayName, email: existsUser.email};
+    }
     const result = await this.userService.create({
       name: 'admin',
       password: 'admin@123',
@@ -244,6 +249,6 @@ export class UserController extends AbstractController {
     });
     const { user, token } = result;
 
-    return { username: user.displayName, token: token.token };
+    return { username: user.displayName, token: token.token, email: user.email };
   }
 }
